@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: portfolio-backend
+
+portfolio:
+  admin:
+    username: admin
+    password: admin123
+
