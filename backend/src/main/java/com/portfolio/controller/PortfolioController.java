@@ -6,9 +6,14 @@ import com.portfolio.model.SocialLink;
 import com.portfolio.service.PortfolioService;
 import com.portfolio.service.AuthService;
 import jakarta.validation.Valid;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -38,6 +43,43 @@ public class PortfolioController {
             return ResponseEntity.status(401).build();
         }
         return ResponseEntity.ok(service.updateAbout(about));
+    }
+
+    @PostMapping(value = "/about/photo", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<About> uploadAboutPhoto(
+            @RequestHeader(value = "X-ADMIN-TOKEN", required = false) String token,
+            @RequestParam("file") MultipartFile file) {
+        if (!authService.isValidToken(token)) {
+            return ResponseEntity.status(401).build();
+        }
+        try {
+            return ResponseEntity.ok(service.saveAboutPhoto(file));
+        } catch (IOException e) {
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @GetMapping("/about/photo")
+    public ResponseEntity<Resource> getAboutPhoto() {
+        try {
+            Resource resource = service.getAboutPhotoResource();
+            if (resource == null || !resource.exists()) {
+                return ResponseEntity.notFound().build();
+            }
+            String contentType = "image/jpeg";
+            String filename = resource.getFilename();
+            if (filename != null) {
+                if (filename.endsWith(".png")) contentType = "image/png";
+                else if (filename.endsWith(".gif")) contentType = "image/gif";
+                else if (filename.endsWith(".webp")) contentType = "image/webp";
+            }
+            return ResponseEntity.ok()
+                    .contentType(MediaType.parseMediaType(contentType))
+                    .header(HttpHeaders.CACHE_CONTROL, "max-age=60")
+                    .body(resource);
+        } catch (IOException e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
     // Projects

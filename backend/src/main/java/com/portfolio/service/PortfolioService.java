@@ -3,8 +3,15 @@ package com.portfolio.service;
 import com.portfolio.model.About;
 import com.portfolio.model.Project;
 import com.portfolio.model.SocialLink;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -97,6 +104,47 @@ public class PortfolioService {
     public About updateAbout(About updated) {
         this.about = updated;
         return this.about;
+    }
+
+    private static final String UPLOADS_DIR = "uploads";
+    private static final String AVATAR_FILENAME = "avatar";
+
+    public About saveAboutPhoto(MultipartFile file) throws IOException {
+        if (file == null || file.isEmpty()) {
+            return about;
+        }
+        Path dir = Paths.get(UPLOADS_DIR);
+        Files.createDirectories(dir);
+        try (var stream = Files.list(dir)) {
+            stream.filter(p -> p.getFileName().toString().startsWith(AVATAR_FILENAME))
+                    .forEach(p -> {
+                        try { Files.delete(p); } catch (IOException ignored) { }
+                    });
+        }
+        String originalFilename = file.getOriginalFilename();
+        String ext = originalFilename != null && originalFilename.contains(".")
+                ? originalFilename.substring(originalFilename.lastIndexOf('.'))
+                : ".jpg";
+        Path target = dir.resolve(AVATAR_FILENAME + ext);
+        file.transferTo(target.toFile());
+        about.setAvatarUrl("/api/about/photo");
+        return about;
+    }
+
+    public Resource getAboutPhotoResource() throws IOException {
+        Path dir = Paths.get(UPLOADS_DIR);
+        if (!Files.exists(dir)) {
+            return null;
+        }
+        try (var stream = Files.list(dir)) {
+            Optional<Path> found = stream
+                    .filter(p -> p.getFileName().toString().startsWith(AVATAR_FILENAME))
+                    .findFirst();
+            if (found.isEmpty()) {
+                return null;
+            }
+            return new FileSystemResource(found.get().toFile());
+        }
     }
 
     // Projects
