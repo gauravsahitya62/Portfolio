@@ -329,7 +329,7 @@ function App() {
     <div className="app-root">
       <header className="navbar">
         <div className="nav-brand" onClick={() => scrollTo('home')}>
-          {navInitials}
+          {displayName}
         </div>
         <nav className="nav-links">
           <button type="button" className="nav-link" onClick={() => scrollTo('home')}>Home</button>
