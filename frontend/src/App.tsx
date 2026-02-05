@@ -16,8 +16,16 @@ type About = {
   avatarUrl?: string
 }
 
-const API_BASE = 'http://localhost:8080/api'
-const API_ORIGIN = API_BASE.replace(/\/api\/?$/, '')
+const API_BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:8080/api'
+const API_ORIGIN = API_BASE ? API_BASE.replace(/\/api\/?$/, '') : ''
+
+const DEFAULT_ABOUT: About = {
+  id: 'about',
+  headline: 'Gaurav Sahitya',
+  summary: 'Professional software developer with strong experience in Java, Spring Boot, and modern web technologies. I focus on building clean, scalable systems and enjoy working across the stack from API design to production deployment.',
+  location: 'Bengaluru, Karnataka, India',
+  avatarUrl: '',
+}
 
 function getAboutPhotoUrl(about: About | null): string | undefined {
   const url = about?.avatarUrl
@@ -129,6 +137,12 @@ function App() {
 
   useEffect(() => {
     const load = async () => {
+      if (!API_BASE) {
+        setAbout(DEFAULT_ABOUT)
+        setLinks([])
+        setLoading(false)
+        return
+      }
       try {
         setLoading(true)
         const [aboutRes, linkRes] = await Promise.all([
@@ -142,8 +156,9 @@ function App() {
         ])
         setAbout(aboutData)
         setLinks(linkData)
-      } catch (e: unknown) {
-        setError(e instanceof Error ? e.message : 'Error loading data')
+      } catch {
+        setAbout(DEFAULT_ABOUT)
+        setLinks([{ id: '1', label: 'GitHub', url: 'https://github.com/gauravsahitya62' }, { id: '2', label: 'LinkedIn', url: 'https://linkedin.com/in/gaurav-sahitya/' }])
       } finally {
         setLoading(false)
       }
@@ -445,25 +460,27 @@ function App() {
             </div>
           </section>
 
-          <section id="about" className="section section-dark">
-            <h2 className="section-title">About Me</h2>
-            <div className="about-grid">
-              <div className="about-text">
-                {about?.summary &&
-                  about.summary
-                    .split(/\n+/)
-                    .filter((block) => block.trim())
-                    .map((paragraph, i) => (
-                      <p key={i}>{paragraph.trim()}</p>
-                    ))
-                }
-              </div>
-              <div className="about-photo">
-                {getAboutPhotoUrl(about) ? (
-                  <img src={getAboutPhotoUrl(about)} alt={displayName} />
-                ) : (
-                  <div className="about-photo-placeholder">{navInitials}</div>
-                )}
+          <section id="about" className="section section-about">
+            <div className="about-card">
+              <h2 className="about-heading"><span className="about-heading-dark">About</span> <span className="about-heading-accent">Me</span></h2>
+              <div className="about-grid">
+                <div className="about-text">
+                  {about?.summary &&
+                    about.summary
+                      .split(/\n+/)
+                      .filter((block) => block.trim())
+                      .map((paragraph, i) => (
+                        <p key={i}>{paragraph.trim()}</p>
+                      ))
+                  }
+                </div>
+                <div className="about-photo">
+                  {getAboutPhotoUrl(about) ? (
+                    <img src={getAboutPhotoUrl(about)} alt={displayName} />
+                  ) : (
+                    <div className="about-photo-placeholder">{navInitials}</div>
+                  )}
+                </div>
               </div>
             </div>
           </section>
