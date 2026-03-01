@@ -22,7 +22,13 @@ const API_ORIGIN = API_BASE ? API_BASE.replace(/\/api\/?$/, '') : ''
 const DEFAULT_ABOUT: About = {
   id: 'about',
   headline: 'Gaurav Sahitya',
-  summary: 'Professional software developer with strong experience in Java, Spring Boot, and modern web technologies. I focus on building clean, scalable systems and enjoy working across the stack from API design to production deployment.',
+  summary: `I’m a Professional Software Developer with strong experience in Java, Spring Boot, and modern web technologies, focused on building clean, scalable, and production-grade systems that solve real business problems.
+
+I design and deliver end-to-end backend solutions, from RESTful APIs and secure authentication systems to role-based platforms and high-performance services. My work spans AI-powered ticketing systems, logistics platforms, and real-estate management solutions, where reliability, scalability, and maintainability matter more than quick hacks.
+
+While my core strength lies in Java and Spring Boot, I also work comfortably across the stack, collaborating with frontend teams and integrating modern tools and frameworks to deliver complete products. I enjoy architecting systems, optimizing performance, and turning complex requirements into simple, elegant solutions.
+
+Outside of code, I value problem-solving, continuous learning, and teamwork. Whether it’s refining system design, debugging production issues, or mentoring teammates, I thrive in environments that push for technical excellence and real-world impact.`,
   location: 'Bengaluru, Karnataka, India',
   avatarUrl: '',
 }
@@ -352,7 +358,7 @@ function App() {
           <button type="button" className="nav-link" onClick={() => scrollTo('skills')}>Skills</button>
           <button type="button" className="nav-link" onClick={() => scrollTo('experience')}>Experience</button>
           <button type="button" className="nav-link" onClick={() => scrollTo('contact')}>Contact</button>
-          <a className="nav-resume" href="/Gaurav_Sahitya_Resume.pdf" download="Gaurav_Sahitya_Resume.pdf">
+          <a className="nav-resume" href={`${import.meta.env.BASE_URL}Gaurav_Sahitya.pdf`} download="Gaurav_Sahitya.pdf">
             <DownloadIcon />
             Resume
           </a>
@@ -557,7 +563,7 @@ function App() {
               ))}
             </div>
             <div className="resume-cta">
-              <a href="/Gaurav_Sahitya_Resume.pdf" download="Gaurav_Sahitya_Resume.pdf" className="btn btn-primary">Download Resume (PDF)</a>
+              <a href={`${import.meta.env.BASE_URL}Gaurav_Sahitya.pdf`} download="Gaurav_Sahitya.pdf" className="btn btn-primary">Download Resume (PDF)</a>
             </div>
           </section>
 
