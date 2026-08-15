@@ -31,49 +31,64 @@ public class PortfolioService {
 
     private void seedDefaults() {
         About defaultAbout = new About();
-        defaultAbout.setHeadline("Gaurav Sahitya · Software Developer");
+        defaultAbout.setHeadline("Gaurav Sahitya");
         defaultAbout.setSummary(
-                "Professional software developer with strong experience in Java, Spring Boot, and modern web technologies. " +
-                "I architect and deliver scalable, production-grade solutions, from AI-powered ticketing systems to logistics and real estate platforms."
+                "Senior Engineer with 4+ years of experience designing and scaling distributed backend systems using Java, Spring Boot, and Microservices. " +
+                "I specialize in REST API latency optimization, AWS cloud integrations, and AI-assisted engineering workflows that drive 35%+ system performance gains.\n\n" +
+                "I architect production platforms end to end — AI automation engines processing thousands of requests a month, document-ingestion pipelines with zero data loss, and microservices that scale to 10,000+ monthly users. Reliability, latency, and maintainability matter more to me than quick hacks.\n\n" +
+                "While my core strength is Java and Spring Boot, I also ship React.js interfaces, AWS integrations (S3, Lambda, API Gateway, Textract), and automated test suites with JUnit and Mockito. I enjoy tightening query paths, designing clean service boundaries, and turning complex requirements into durable systems.\n\n" +
+                "Outside of code, I value problem-solving, continuous learning, and teamwork. Whether it is refining system design, debugging production issues, or accelerating delivery with Cursor and Amazon Q, I thrive in environments that push for technical excellence and real-world impact."
         );
         defaultAbout.setLocation("Bengaluru, Karnataka, India");
         defaultAbout.setAvatarUrl("");
         this.about = defaultAbout;
 
-        Project ticketing = new Project();
-        ticketing.setId(nextId());
-        ticketing.setTitle("AI-based Ticketing & Support Platform");
-        ticketing.setDescription(
-                "Enterprise ticketing system with brand-wise segregation, automated email-to-ticket conversion, " +
-                "and intelligent chat support using OpenAI and AWS Textract."
+        Project automation = new Project();
+        automation.setId(nextId());
+        automation.setTitle("AI Systems Automation Platform");
+        automation.setDescription(
+                "Spring Boot automation engine processing 5,000+ requests/month with intelligent routing, cutting manual support overhead by 60%. " +
+                "Built admin filtering with Spring AOP to speed structural data retrieval by 30%."
         );
-        ticketing.setGithubUrl("");
-        ticketing.setLiveUrl("");
-        ticketing.setTags(new String[]{"Java", "Spring Boot", "REST APIs", "AWS Textract", "OpenAI"});
-        projects.put(ticketing.getId(), ticketing);
+        automation.setGithubUrl("");
+        automation.setLiveUrl("");
+        automation.setTags(new String[]{"Java", "Spring Boot", "Spring AOP", "OpenAI", "REST APIs"});
+        projects.put(automation.getId(), automation);
+
+        Project invoices = new Project();
+        invoices.setId(nextId());
+        invoices.setTitle("Automated Invoice Ingestion Pipeline");
+        invoices.setDescription(
+                "Asynchronous document pipeline integrating OpenAI and AWS Textract to ingest 1,000+ invoices/month with zero data loss. " +
+                "Handles extraction, validation, and downstream processing for finance operations."
+        );
+        invoices.setGithubUrl("");
+        invoices.setLiveUrl("");
+        invoices.setTags(new String[]{"AWS Textract", "OpenAI", "Lambda", "S3", "Spring Boot"});
+        projects.put(invoices.getId(), invoices);
 
         Project realEstate = new Project();
         realEstate.setId(nextId());
-        realEstate.setTitle("Real Estate Data & Mapping Platform");
+        realEstate.setTitle("Real Estate Microservices Platform");
         realEstate.setDescription(
-                "High-performance real estate platform built with Java and Spring Boot, integrating Google Maps and MLS feeds " +
-                "to deliver accurate, real-time property data and rich map visualisations."
+                "Refactored a legacy monolith into Spring Boot microservices serving 10,000+ monthly users. " +
+                "Integrated Google Maps and MLS feeds, and cut production API latency by 35% through MySQL schema and query tuning."
         );
         realEstate.setGithubUrl("");
         realEstate.setLiveUrl("");
-        realEstate.setTags(new String[]{"Java", "Spring Boot", "Google Maps API", "MLS Feeds"});
+        realEstate.setTags(new String[]{"Java", "Spring Boot", "MySQL", "Google Maps", "React.js"});
         projects.put(realEstate.getId(), realEstate);
 
         Project logistics = new Project();
         logistics.setId(nextId());
-        logistics.setTitle("Logistics & Package Delivery System");
+        logistics.setTitle("Logistics Tracking Platform");
         logistics.setDescription(
-                "Logistics solution for a Kuwait-based enterprise with real-time package tracking and integrations " +
-                "with multiple third-party delivery partners."
+                "Concurrent shipment tracking system processing 1,000+ daily updates with zero write-collisions. " +
+                "Java webhooks reduced processing latency by 30%, with JUnit/Mockito coverage above 80% on critical paths."
         );
         logistics.setGithubUrl("");
         logistics.setLiveUrl("");
-        logistics.setTags(new String[]{"Java", "Spring Boot", "REST APIs", "Logistics"});
+        logistics.setTags(new String[]{"Java", "Webhooks", "JUnit", "Mockito", "REST APIs"});
         projects.put(logistics.getId(), logistics);
 
         SocialLink github = new SocialLink();
