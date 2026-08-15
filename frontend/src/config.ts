@@ -1,4 +1,8 @@
 export const config = {
+    site: {
+        url: "https://gauravsahitya.com",
+        ogImage: "/images/mypic.jpeg",
+    },
     developer: {
         name: "Gaurav",
         fullName: "Gaurav Sahitya",

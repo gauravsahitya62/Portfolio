@@ -18,6 +18,10 @@ const Landing = ({ children }: PropsWithChildren) => {
               {' '}
               <br />
               {lastName && <span>{lastName.toUpperCase()}</span>}
+              <span className="sr-only">
+                {" "}
+                — Software Engineer, SDE-II and Distributed Systems Engineer in Bengaluru, India
+              </span>
             </h1>
           </div>
           <div className="landing-stage" aria-hidden="true" />

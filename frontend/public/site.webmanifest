@@ -1,0 +1,17 @@
+{
+  "name": "Gaurav Sahitya — Software Engineer",
+  "short_name": "Gaurav Sahitya",
+  "description": "SDE-II software engineer in Bengaluru specializing in Java, Spring Boot, and distributed systems.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b080c",
+  "theme_color": "#0b080c",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/images/mypic.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

@@ -12,8 +12,9 @@ const MyWorks = () => {
         </Link>
         <h1>
           All <span>Works</span>
+          <span className="sr-only"> — software engineering projects by Gaurav Sahitya</span>
         </h1>
-        <p>A collection of all my projects and creations</p>
+        <p>Software engineering projects: Java, Spring Boot, AWS, and production systems</p>
       </div>
 
       <div className="myworks-grid">
