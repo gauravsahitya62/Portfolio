@@ -21,6 +21,13 @@
     width: 900px;
   }
 }
+@media only screen and (max-width: 1024px) {
+  .section-container {
+    width: 100%;
+    max-width: min(900px, var(--cWidth));
+    box-sizing: border-box;
+  }
+}
 @media only screen and (max-width: 900px) {
   .section-container {
     width: 100%;

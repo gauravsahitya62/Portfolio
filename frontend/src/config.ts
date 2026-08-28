@@ -37,7 +37,19 @@ export const config = {
             technologies: ["Java", "Spring Boot", "AWS Textract", "OpenAI", "Spring AOP"]
         },
         {
-            position: "Software Developer",
+            position: "MCA",
+            company: "Pratap University, Jaipur",
+            period: "2024",
+            location: "Jaipur, India",
+            description: "Postgraduate focus on software engineering, distributed systems, and applied computing while shipping production Java systems.",
+            responsibilities: [
+                "Software engineering and distributed systems coursework",
+                "Applied computing and backend system design"
+            ],
+            technologies: ["Java", "Databases", "System Design"]
+        },
+        {
+            position: "Software Engineer",
             company: "AppCrave",
             period: "2023 - 2025",
             location: "Udaipur, India",
@@ -61,18 +73,6 @@ export const config = {
                 "Authored mock testing suites with JUnit and Mockito, driving automated test coverage past an 80% baseline."
             ],
             technologies: ["Java", "Webhooks", "JUnit", "Mockito", "REST APIs"]
-        },
-        {
-            position: "MCA",
-            company: "Pratap University, Jaipur",
-            period: "2024",
-            location: "Jaipur, India",
-            description: "Postgraduate focus on software engineering, distributed systems, and applied computing while shipping production Java systems.",
-            responsibilities: [
-                "Software engineering and distributed systems coursework",
-                "Applied computing and backend system design"
-            ],
-            technologies: ["Java", "Databases", "System Design"]
         }
     ],
     projects: [

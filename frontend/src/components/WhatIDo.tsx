@@ -9,23 +9,26 @@ const WhatIDo = () => {
     containerRef.current[index] = el;
   };
   useEffect(() => {
-    const handlers = new Map<HTMLDivElement, () => void>();
-    const isTouch = ScrollTrigger.isTouch === 1 || window.innerWidth <= 900;
+    const touch =
+      ScrollTrigger.isTouch ||
+      window.matchMedia("(hover: none), (pointer: coarse)").matches;
+    const handlers: Array<{ el: HTMLDivElement; fn: () => void }> = [];
 
     containerRef.current.forEach((container) => {
       if (!container) return;
-      if (isTouch) {
+      if (touch) {
         container.classList.remove("what-noTouch");
-        const onClick = () => handleClick(container);
-        handlers.set(container, onClick);
-        container.addEventListener("click", onClick);
+        const fn = () => handleClick(container);
+        container.addEventListener("click", fn);
+        handlers.push({ el: container, fn });
       }
     });
+    if (touch && containerRef.current[0]) {
+      containerRef.current[0].classList.add("what-content-active");
+    }
 
     return () => {
-      handlers.forEach((onClick, container) => {
-        container.removeEventListener("click", onClick);
-      });
+      handlers.forEach(({ el, fn }) => el.removeEventListener("click", fn));
     };
   }, []);
   return (

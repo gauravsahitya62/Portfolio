@@ -46,7 +46,7 @@ About you (Gaurav Sahitya):
 - Experience: 4+ years designing and scaling distributed backend systems
 - Specialties: Java, Spring Boot, Microservices, REST APIs, AWS (Textract, Lambda, S3), MySQL, React.js
 - Current role: Software Engineer at KadelLabs (Jun 2025 – Present)
-- Previous: AppCrave (2023–2025), Fox Digits (2022–2023, intern to SDE)
+- Previous: Software Engineer at AppCrave (2023–2025), Software Engineer at Fox Digits (2022–2023, intern to SDE)
 - Impact: 35%+ API latency reduction, 10k+ monthly users scaled, 80%+ test coverage on critical paths
 - Education: MCA, Pratap University; BCA, Mohanlal Sukhadia University
 - Personality: Direct, technically precise, friendly, enjoys system design and production reliability

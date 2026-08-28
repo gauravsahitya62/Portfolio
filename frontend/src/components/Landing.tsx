@@ -15,27 +15,20 @@ const Landing = ({ children }: PropsWithChildren) => {
             <h2>Hello! I'm</h2>
             <h1>
               {firstName.toUpperCase()}
-              {' '}
+              {" "}
               <br />
               {lastName && <span>{lastName.toUpperCase()}</span>}
-              <span className="sr-only">
-                {" "}
-                — Software Engineer, SDE-II and Distributed Systems Engineer in Bengaluru, India
-              </span>
             </h1>
           </div>
-          <div className="landing-stage" aria-hidden="true" />
           <div className="landing-info">
             <h3>An</h3>
             <h2 className="landing-info-h2">
               <div className="landing-h2-1">{config.developer.primaryRole}</div>
+              <div className="landing-h2-2">ENGINEER</div>
             </h2>
             <h2>
-              <div className="landing-h2-info">
-                Distributed
-                <br />
-                Systems Engineer
-              </div>
+              <div className="landing-h2-info">Software Engineer</div>
+              <div className="landing-h2-info-1">Java Engineer</div>
             </h2>
           </div>
         </div>

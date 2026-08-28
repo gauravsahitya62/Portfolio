@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { config } from "../config";
 import WorkCover from "../components/WorkCover";
+import { initScrollReveal } from "../utils/scrollReveal";
 import "./MyWorks.css";
 
 const MyWorks = () => {
+  useEffect(() => initScrollReveal(), []);
   return (
     <div className="myworks-page">
       <div className="myworks-header">
@@ -18,7 +21,9 @@ const MyWorks = () => {
       </div>
 
       <div className="myworks-grid">
-        {config.projects.map((project, index) => {
+        {config.projects
+          .filter((project) => project.title === "Wedding Vows by Nikhil")
+          .map((project, index) => {
           const isInternalLink = Boolean(project.link?.startsWith("/"));
           const useCover = !project.image || project.image.includes("placeholder");
           const cardContent = (
@@ -51,6 +56,7 @@ const MyWorks = () => {
                 className="myworks-card"
                 key={project.id}
                 data-cursor="disable"
+                data-reveal
                 to={project.link}
               >
                 {cardContent}
@@ -63,6 +69,7 @@ const MyWorks = () => {
               className="myworks-card"
               key={project.id}
               data-cursor="disable"
+              data-reveal
               href={project.link || undefined}
               target={project.link ? "_blank" : undefined}
               rel={project.link ? "noopener noreferrer" : undefined}

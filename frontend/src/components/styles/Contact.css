@@ -11,7 +11,7 @@
   justify-content: flex-start;
 }
 .contact-section h3 {
-  font-size: 32px;
+  font-size: clamp(26px, 8vw, 32px);
   font-weight: 400;
   text-transform: uppercase;
   margin: 0;
@@ -36,20 +36,10 @@
   margin-bottom: 15px;
   font-size: 14px;
 }
-a.contact-social,
-a.contact-resume {
+a.contact-social {
   font-size: 16px;
   border-bottom: 1px solid #ccc;
   margin-bottom: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  width: fit-content;
-}
-a.contact-resume {
-  margin-top: 8px;
-  border-bottom-color: var(--accentColor);
-  color: var(--accentColor);
 }
 .contact-box h2 {
   font-weight: 400;
@@ -129,74 +119,21 @@ a.contact-resume {
   }
 }
 @media only screen and (max-width: 900px) {
-  .contact-section {
-    margin-top: 24px;
-    padding: 0 0 max(28px, env(safe-area-inset-bottom));
-    min-height: 0;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-  .contact-container {
-    width: 100%;
-    max-width: 100%;
-    padding: 0 4px;
-    box-sizing: border-box;
-  }
-  .contact-section h3 {
-    font-size: 28px;
-    line-height: 1.15;
-    margin-bottom: 28px;
-    word-break: break-word;
-  }
   .contact-flex {
     flex-direction: column;
-    gap: 28px;
-  }
-  .contact-box {
-    gap: 0;
-  }
-  .contact-flex h4 {
-    margin-top: 16px;
-    font-size: 12px;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-  }
-  .contact-box h4:first-child {
-    margin-top: 0;
+    gap: 40px;
   }
   .contact-flex p {
-    margin-top: 6px;
-    margin-bottom: 0;
-    font-size: 15px;
-    line-height: 1.45;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+    margin-bottom: 0px;
   }
-  a.contact-social,
-  a.contact-resume {
-    min-height: 44px;
-    width: 100%;
-    box-sizing: border-box;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-    margin-bottom: 0;
-    padding: 10px 0;
-    font-size: 16px;
+  .contact-flex h4 {
+    margin-top: 20px;
   }
-  a.contact-resume {
-    margin-top: 4px;
-    justify-content: flex-start;
+  .contact-section {
+    margin-top: 50px;
+    padding-bottom: max(80px, calc(50px + env(safe-area-inset-bottom, 0px)));
   }
-  .contact-box-credit {
-    padding-top: 8px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-  }
-  .contact-box h2 {
-    font-size: 14px;
-    line-height: 20px;
-  }
-  .contact-box h5 {
-    margin-top: 10px;
-    font-size: 13px;
+  .contact-container {
+    width: calc(100% - 8px);
   }
 }

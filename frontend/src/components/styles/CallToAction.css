@@ -52,20 +52,19 @@
 /* Responsive */
 @media only screen and (max-width: 768px) {
   .cta-section {
-    padding: 60px 20px;
+    padding: 48px 16px 32px;
   }
 
   .cta-buttons {
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
+    width: 100%;
+    max-width: 360px;
   }
 
   .cta-btn {
     justify-content: center;
-    padding: 12px 28px;
+    padding: 14px 28px;
     width: 100%;
-    max-width: 320px;
-    min-height: 44px;
-    box-sizing: border-box;
   }
 }

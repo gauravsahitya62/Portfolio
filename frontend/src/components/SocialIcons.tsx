@@ -1,8 +1,8 @@
 import {
-  FaEnvelope,
   FaGithub,
+  FaInstagram,
   FaLinkedinIn,
-  FaPhone,
+  FaXTwitter,
 } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
@@ -71,17 +71,17 @@ const SocialIcons = () => {
           </a>
         </span>
         <span>
-          <a href={`mailto:${config.contact.email}`}>
-            <FaEnvelope />
+          <a href={config.contact.twitter} target="_blank" rel="noopener noreferrer">
+            <FaXTwitter />
           </a>
         </span>
         <span>
-          <a href={`tel:${config.contact.phone.replace(/\s/g, "")}`}>
-            <FaPhone />
+          <a href={config.contact.instagram} target="_blank" rel="noopener noreferrer">
+            <FaInstagram />
           </a>
         </span>
       </div>
-      <a className="resume-button" href={config.resume} download="Gaurav_Sahitya.pdf">
+      <a className="resume-button" href={config.resume} target="_blank" rel="noopener noreferrer">
         <HoverLinks text="RESUME" />
         <span>
           <TbNotes />

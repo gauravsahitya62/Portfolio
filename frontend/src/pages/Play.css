@@ -490,6 +490,18 @@ body:has(.play-page) {
 }
 
 /* Responsive */
+html.touch-ui .chess-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+html.touch-ui .chess-board-section,
+html.touch-ui .chess-side-panel,
+html.touch-ui .chat-panel {
+  width: 100%;
+  max-width: 640px;
+}
+
 @media only screen and (max-width: 1100px) {
   .chess-container {
     flex-direction: column;

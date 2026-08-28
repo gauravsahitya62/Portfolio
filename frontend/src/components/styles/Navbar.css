@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 0px;
+  padding-top: max(15px, env(safe-area-inset-top, 0px));
   margin-bottom: -80px;
   box-sizing: border-box;
   position: fixed;
@@ -12,48 +13,51 @@
   transform: translateX(-50%);
   top: 0;
   z-index: 9999;
+  gap: 16px;
 }
 .header ul {
   font-size: 11px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   list-style: none;
-  column-gap: 14px;
-  row-gap: 0;
-  align-items: center;
+  column-gap: 20px;
+  row-gap: 6px;
+  align-items: end;
+  flex-shrink: 0;
 }
 .header ul li {
   margin-left: 0px;
   letter-spacing: 0.8px;
-  color: #eae5ec;
+  color: #ccc;
   font-weight: 600;
   cursor: pointer;
 }
-.header ul a {
-  display: flex;
-  align-items: center;
-  min-height: 36px;
-}
 .navbar-connect {
-  position: absolute;
   display: none;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: static;
+  transform: none;
+  margin-left: auto;
+  margin-right: 24px;
   font-size: 13px;
   letter-spacing: 0.8px;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: min(340px, 32vw);
 }
 .navbar-title {
   font-weight: 700;
   font-size: 13px;
   letter-spacing: 0.2px;
+  flex-shrink: 0;
 }
 @media only screen and (min-width: 500px) {
   .header {
     padding: 20px 0px;
+    padding-top: max(20px, env(safe-area-inset-top, 0px));
   }
   .header ul {
     flex-direction: row;
@@ -67,21 +71,23 @@
     font-size: 16px;
   }
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1100px) {
   .navbar-connect {
     display: block;
   }
 }
 @media only screen and (min-width: 1200px) {
   .header {
-    padding: 35px 0px;
+    padding: 28px 0px;
+    padding-top: max(28px, env(safe-area-inset-top, 0px));
   }
   .header ul {
-    column-gap: 80px;
+    column-gap: 56px;
     font-size: 16px;
   }
   .navbar-connect {
-    font-size: 16px;
+    font-size: 15px;
+    max-width: none;
   }
   .navbar-title {
     font-size: 18px;

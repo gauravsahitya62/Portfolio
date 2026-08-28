@@ -25,11 +25,15 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
   };
 
   useEffect(() => {
-    import("../components/utils/initialFX").then((module) => {
-      if (module.initialFX) {
-        module.initialFX();
-      }
-    });
+    const timer = window.setTimeout(() => {
+      import("../components/utils/initialFX").then((module) => {
+        if (module.initialFX) {
+          module.initialFX();
+        }
+      });
+    }, 80);
+
+    return () => window.clearTimeout(timer);
   }, []);
 
   return (

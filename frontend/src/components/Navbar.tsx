@@ -3,78 +3,64 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import Lenis from "lenis";
-import "./styles/Navbar.css";
 import { config } from "../config";
+import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollTrigger);
 export let lenis: Lenis | null = null;
 
 const Navbar = () => {
   useEffect(() => {
-    const desktopScroll = window.innerWidth > 768;
-    let rafId = 0;
+    lenis = new Lenis({
+      duration: 1.7,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1.7,
+      touchMultiplier: 2,
+      infinite: false,
+    });
 
-    if (desktopScroll) {
-      lenis = new Lenis({
-        duration: 0.9,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: "vertical",
-        gestureOrientation: "vertical",
-        smoothWheel: true,
-        wheelMultiplier: 1.05,
-        touchMultiplier: 1.4,
-        infinite: false,
-      });
-      lenis.start();
+    lenis.on("scroll", ScrollTrigger.update);
+    document.body.style.overflowY = "auto";
+    lenis.start();
 
-      const raf = (time: number) => {
-        lenis?.raf(time);
-        rafId = requestAnimationFrame(raf);
-      };
-      rafId = requestAnimationFrame(raf);
+    function raf(time: number) {
+      lenis?.raf(time);
+      requestAnimationFrame(raf);
     }
-
-    const scrollToSection = (section: string) => {
-      const target = document.querySelector(section) as HTMLElement | null;
-      if (!target) return;
-      if (desktopScroll && lenis) {
-        lenis.scrollTo(target, {
-          offset: 0,
-          duration: 1.5,
-        });
-        return;
-      }
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    };
-
-    const onNavClick = (e: Event) => {
-      const elem = e.currentTarget as HTMLAnchorElement;
-      const section = elem.getAttribute("data-href");
-      if (!section) return;
-      e.preventDefault();
-      scrollToSection(section);
-    };
+    requestAnimationFrame(raf);
 
     const links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {
-      elem.addEventListener("click", onNavClick);
+      const element = elem as HTMLAnchorElement;
+      element.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetLink = e.currentTarget as HTMLAnchorElement;
+        const section = targetLink.getAttribute("data-href");
+        if (section && lenis) {
+          const target = document.querySelector(section) as HTMLElement;
+          if (target) {
+            lenis.scrollTo(target, {
+              offset: 0,
+              duration: window.innerWidth < 768 ? 1.1 : 1.5,
+            });
+          }
+        }
+      });
     });
 
-    const onResize = () => {
+    window.addEventListener("resize", () => {
       lenis?.resize();
-    };
-    window.addEventListener("resize", onResize);
+    });
 
     return () => {
-      links.forEach((elem) => {
-        elem.removeEventListener("click", onNavClick);
-      });
-      window.removeEventListener("resize", onResize);
-      if (rafId) cancelAnimationFrame(rafId);
       lenis?.destroy();
       lenis = null;
     };
   }, []);
+
   return (
     <>
       <div className="header">

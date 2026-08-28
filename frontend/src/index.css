@@ -22,6 +22,14 @@
   --backgroundColor: #0b080c;
   --vh: 100vh;
   --vh: 100svh;
+  --cWidth: calc(100% - 24px);
+  --cMaxWidth: 1920px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 h1,
@@ -33,72 +41,10 @@ h6 {
   font-family: "Geist", sans-serif;
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 html {
   overflow-x: hidden;
   overflow-y: auto;
-  height: auto;
-}
-
-body {
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: auto;
-}
-
-#root {
-  min-height: 100%;
-  height: auto;
-}
-
-#about,
-#work,
-#contact,
-.career-section,
-.whatIDO,
-.techstack-new {
-  scroll-margin-top: 72px;
-}
-
-/* Allow scrolling on mobile */
-@media only screen and (max-width: 768px) {
-  body {
-    overflow: auto !important;
-    height: auto !important;
-    min-height: 100vh !important;
-    touch-action: pan-y;
-  }
-
-  html {
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
-    touch-action: pan-y;
-  }
-
-  /* Ensure no fixed elements block scrolling */
-  .container-main {
-    position: static !important;
-    height: auto !important;
-    overflow-x: hidden;
-  }
-
-  .techstack {
-    height: auto;
-    min-height: 0;
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
+  -webkit-text-size-adjust: 100%;
 }
 
 a {
@@ -116,7 +62,9 @@ main {
 }
 
 .main-active {
-  opacity: 1;
+  opacity: 0;
+  animation: fadeIn 1s 1;
+  animation-fill-mode: forwards;
 }
 
 @keyframes fadeIn {
@@ -128,10 +76,9 @@ main {
 body {
   margin: 0;
   height: auto;
+  min-height: 100vh;
   background-color: #000;
   flex-grow: 1;
-  --cWidth: calc(100% - 30px);
-  --cMaxWidth: 1920px;
   max-width: 100vw;
   overflow-x: hidden;
   overflow-y: auto;
@@ -159,6 +106,7 @@ body {
 
 .split-line {
   overflow: hidden;
+  padding-bottom: 0.12em;
 }
 
 .split-h2 {
@@ -166,6 +114,9 @@ body {
   display: flex;
   white-space: nowrap;
   flex-wrap: nowrap;
+  line-height: 1.2;
+  min-height: 1.2em;
+  padding: 0.08em 0 0.18em;
 }
 
 .techstack {
@@ -219,6 +170,34 @@ body {
   margin: 0;
 }
 
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(8px);
+}
+
+.is-revealed {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s ease;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 @media screen and (min-width: 768px) {
   body {
     --cWidth: 94%;
@@ -228,5 +207,23 @@ body {
 @media screen and (max-width: 900px) {
   .techstack h2 {
     font-size: 40px;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-main {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-pending {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .is-revealed {
+    transition: none;
   }
 }

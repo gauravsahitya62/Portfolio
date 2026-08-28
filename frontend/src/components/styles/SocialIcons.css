@@ -6,16 +6,21 @@
   z-index: 99;
   left: 50%;
   transform: translateX(-50%);
+  pointer-events: none;
+}
+.icons-section a,
+.icons-section .social-icons {
+  pointer-events: auto;
 }
 .social-icons {
   position: absolute;
-  left: -20px;
-  bottom: 20px;
-  display: none;
-  flex-direction: column;
-  gap: 8px;
+  left: -8px;
+  bottom: max(12px, env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
   z-index: 999;
-  padding: 10px;
+  padding: 8px;
 }
 .social-icons:hover {
   transition: 0.3s;
@@ -23,11 +28,10 @@
 }
 .social-icons a:hover {
   color: var(--backgroundColor);
-  /* transform: scale(1.2); */
 }
 .social-icons span {
-  width: 50px;
-  height: 50px;
+  width: 36px;
+  height: 36px;
   position: relative;
   display: flex;
 }
@@ -39,7 +43,7 @@
   top: var(--siTop, 50%);
   transform: translate(-50%, -50%);
   display: flex;
-  font-size: 23px;
+  font-size: 18px;
   will-change: left, top;
   transition: transform 0.3s ease-out;
 }
@@ -48,26 +52,26 @@
   z-index: 99;
   display: flex;
   gap: 5px;
-  bottom: 40px;
+  bottom: max(16px, env(safe-area-inset-bottom, 0px));
   right: 0;
   width: auto;
   text-wrap: nowrap;
-  letter-spacing: 4px;
-  font-size: 15px;
+  letter-spacing: 3px;
+  font-size: 13px;
   line-height: 15px;
   font-weight: 600;
   color: #5e5e5e;
   cursor: pointer;
   transition: 0.5s;
   transform-origin: left bottom;
-  transform: translateX(100%) rotateZ(-90deg);
+  transform: none;
 }
 .resume-button:hover {
   color: #fff;
 }
 div.resume-button span {
   color: #fff;
-  font-size: 17px;
+  font-size: 16px;
   margin-top: -1px;
   display: flex;
   align-items: center;
@@ -81,28 +85,30 @@ div.resume-button span {
   width: 100%;
   z-index: 99999;
 }
-@media only screen and (min-width: 900px) {
-  .social-icons {
-    display: flex;
-    gap: 20px;
-  }
-  .social-icons a {
-    font-size: 28px;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .icons-section {
-    display: none;
-  }
-}
 @media only screen and (min-width: 768px) {
   .resume-button {
-    transform: none;
     font-size: 20px;
     line-height: 20px;
+    bottom: 40px;
   }
   div.resume-button span {
     font-size: 23px;
     margin-top: -1.5px;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .social-icons {
+    left: -20px;
+    bottom: 20px;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+  }
+  .social-icons span {
+    width: 50px;
+    height: 50px;
+  }
+  .social-icons a {
+    font-size: 28px;
   }
 }

@@ -9,8 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   useEffect(() => {
-    if (window.innerWidth <= 900) return;
-
     const contactTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".contact-section",
@@ -20,6 +18,7 @@ const Contact = () => {
       },
     });
 
+    // Animate title from bottom
     contactTimeline.fromTo(
       ".contact-section h3",
       {
@@ -34,6 +33,7 @@ const Contact = () => {
       }
     );
 
+    // Animate contact boxes with stagger from bottom
     contactTimeline.fromTo(
       ".contact-box",
       {
@@ -50,6 +50,7 @@ const Contact = () => {
       "-=0.4"
     );
 
+    // Clean up
     return () => {
       contactTimeline.kill();
     };
@@ -92,30 +93,41 @@ const Contact = () => {
             >
               Linkedin <MdArrowOutward />
             </a>
-            <a
-              href={`mailto:${config.contact.email}`}
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Email <MdArrowOutward />
-            </a>
-            <a
-              href={`tel:${config.contact.phone.replace(/\s/g, "")}`}
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Phone <MdArrowOutward />
-            </a>
-            <a
-              href={config.resume}
-              download="Gaurav_Sahitya.pdf"
-              data-cursor="disable"
-              className="contact-resume"
-            >
-              Resume <MdArrowOutward />
-            </a>
+            {config.contact.twitter && (
+              <a
+                href={config.contact.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="disable"
+                className="contact-social"
+              >
+                Twitter <MdArrowOutward />
+              </a>
+            )}
+            {config.contact.facebook && (
+              <a
+                href={config.contact.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="disable"
+                className="contact-social"
+              >
+                Facebook <MdArrowOutward />
+              </a>
+            )}
+            {config.contact.instagram && (
+              <a
+                href={config.contact.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="disable"
+                className="contact-social"
+              >
+                Instagram <MdArrowOutward />
+              </a>
+            )}
           </div>
-          <div className="contact-box contact-box-credit">
+          <div className="contact-box">
             <h2>
               Designed and Developed <br /> by <span>{config.developer.fullName}</span>
             </h2>

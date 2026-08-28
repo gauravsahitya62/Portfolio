@@ -20,3 +20,7 @@
     color: var(--accentColor);
   }
 }
+.hover-link:active .hover-in {
+  transform: translateY(-100%);
+  color: var(--accentColor);
+}

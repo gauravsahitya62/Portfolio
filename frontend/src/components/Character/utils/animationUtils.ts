@@ -38,12 +38,11 @@ const setAnimations = (gltf: GLTF) => {
     );
     const introAction = mixer.clipAction(introClip!);
     introAction.clampWhenFinished = true;
-    introAction.timeScale = 1.6;
     introAction.reset().play();
     setTimeout(() => {
       const blink = gltf.animations.find((clip) => clip.name === "Blink");
-      mixer.clipAction(blink!).play().fadeIn(0.3);
-    }, 900);
+      mixer.clipAction(blink!).play().fadeIn(0.5);
+    }, 2500);
   }
   function hover(gltf: GLTF, hoverDiv: HTMLDivElement) {
     let eyeBrowUpAction = createBoneAction(
