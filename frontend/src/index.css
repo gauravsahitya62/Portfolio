@@ -15,9 +15,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
   --accentColor: #c2a4ff;
   --backgroundColor: #0b080c;
   --vh: 100vh;
@@ -196,6 +196,23 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -80px;
+  z-index: 10000;
+  padding: 10px 16px;
+  background: var(--accentColor);
+  color: #0b080c;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.skip-link:focus {
+  top: 12px;
+  color: #0b080c;
 }
 
 @media screen and (min-width: 768px) {

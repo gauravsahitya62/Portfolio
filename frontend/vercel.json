@@ -5,7 +5,7 @@
       "destination": "/api/$1"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|humans\\.txt|site\\.webmanifest|favicon\\.svg).*)",
       "destination": "/index.html"
     }
   ],
@@ -28,6 +28,15 @@
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/(robots.txt|sitemap.xml|llms.txt|llms-full.txt|humans.txt)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
         }
       ]
     }

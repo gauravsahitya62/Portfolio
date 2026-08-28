@@ -8,7 +8,7 @@ import "./MyWorks.css";
 const MyWorks = () => {
   useEffect(() => initScrollReveal(), []);
   return (
-    <div className="myworks-page">
+    <main className="myworks-page">
       <div className="myworks-header">
         <Link to="/" className="back-button" data-cursor="disable">
           ← Back to Home
@@ -79,7 +79,7 @@ const MyWorks = () => {
           );
         })}
       </div>
-    </div>
+    </main>
   );
 };
 

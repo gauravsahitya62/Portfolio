@@ -59,14 +59,18 @@
   gap: 50px;
 }
 
-.career-info h3 {
+.career-year {
   font-size: 48px;
   margin: 0;
   font-weight: 500;
   line-height: 45px;
 }
 
-.career-info h4 {
+.career-year time {
+  font: inherit;
+}
+
+.career-role h3 {
   font-size: 33px;
   line-height: 30px;
   letter-spacing: 0.8px;
@@ -74,7 +78,7 @@
   margin: 0;
 }
 
-.career-info h5 {
+.career-role h4 {
   font-weight: 400;
   letter-spacing: 0.7px;
   font-size: 20px;
@@ -149,17 +153,17 @@
     line-height: 50px;
   }
 
-  .career-info h4 {
+  .career-role h3 {
     font-size: 22px;
     line-height: 24px;
     width: 180px;
   }
 
-  .career-info h5 {
+  .career-role h4 {
     font-size: 17px;
   }
 
-  .career-info h3 {
+  .career-year {
     font-size: 40px;
   }
 
@@ -183,11 +187,11 @@
     line-height: 44px;
   }
 
-  .career-info h3 {
+  .career-year {
     font-size: 36px;
   }
 
-  .career-info h4 {
+  .career-role h3 {
     font-size: 20px;
   }
 }
@@ -198,7 +202,7 @@
     line-height: 48px;
   }
 
-  .career-info h3 {
+  .career-year {
     font-size: 38px;
   }
 }
@@ -251,7 +255,7 @@
     gap: 0px;
   }
 
-  .career-info h3 {
+  .career-year {
     font-size: 33px;
   }
 

@@ -98,14 +98,14 @@ const Work = () => {
     };
   }, []);
   return (
-    <div className={`work-section${featuredWorks.length <= 1 ? " work-section-static" : ""}`} id="work">
+    <section className={`work-section${featuredWorks.length <= 1 ? " work-section-static" : ""}`} id="work" aria-labelledby="work-heading">
       <div className="work-container section-container">
-        <h2>
+        <h2 id="work-heading">
           My <span>Work</span>
         </h2>
         <div className={`work-flex${featuredWorks.length <= 1 ? " work-flex-single" : ""}`}>
           {featuredWorks.map((project, index) => (
-            <div className="work-box" key={project.id}>
+            <article className="work-box" key={project.id}>
               <div className="work-info">
                 <div className="work-title">
                   <h3>0{index + 1}</h3>
@@ -119,11 +119,11 @@ const Work = () => {
                 <p>{project.technologies}</p>
               </div>
               <WorkImage image={project.image} alt={project.title} link={project.link} />
-            </div>
+            </article>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

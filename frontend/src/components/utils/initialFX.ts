@@ -14,7 +14,7 @@ export function initialFX() {
     return;
   }
   started = true;
-  const main = document.getElementsByTagName("main")[0];
+  const main = document.querySelector("main.main-body");
   if (main) {
     main.classList.add("main-active");
   }
@@ -28,7 +28,7 @@ export function initialFX() {
   const yOff = prefersReducedMotion() ? 0 : compact ? 40 : 80;
   const blur = prefersReducedMotion() ? "blur(0px)" : "blur(5px)";
 
-  const selectors = [".landing-info h3", ".landing-intro h2", ".landing-intro h1"];
+  const selectors = [".landing-info h3", ".landing-intro .landing-hello", ".landing-intro h1"];
   const elements = selectors.flatMap(selector => Array.from(document.querySelectorAll(selector)));
   var landingText = new TextSplitter(elements, {
     type: "chars,lines",

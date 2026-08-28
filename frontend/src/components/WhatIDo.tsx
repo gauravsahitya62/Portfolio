@@ -32,9 +32,9 @@ const WhatIDo = () => {
     };
   }, []);
   return (
-    <div className="whatIDO">
+    <section className="whatIDO" id="what-i-do" aria-labelledby="what-heading">
       <div className="what-box">
-        <h2 className="title">
+        <h2 className="title" id="what-heading">
           W<span className="hat-h2">HAT</span>
           <div>
             &nbsp;I<span className="do-h2"> DO</span>
@@ -143,7 +143,7 @@ const WhatIDo = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

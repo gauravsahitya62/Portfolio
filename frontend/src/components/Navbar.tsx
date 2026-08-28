@@ -63,7 +63,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="header">
+      <header className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
           {config.developer.initials}
         </a>
@@ -74,7 +74,8 @@ const Navbar = () => {
         >
           {config.social.email}
         </a>
-        <ul>
+        <nav aria-label="Primary">
+          <ul>
           <li>
             <a data-href="#about" href="#about">
               <HoverLinks text="ABOUT" />
@@ -91,7 +92,8 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
-      </div>
+        </nav>
+      </header>
 
       <div className="landing-circle1"></div>
       <div className="landing-circle2"></div>

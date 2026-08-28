@@ -146,7 +146,7 @@
   left: 0;
   max-width: min(100%, 92vw);
 }
-.landing-intro h2 {
+.landing-intro .landing-hello {
   margin: 0;
   color: var(--accentColor);
   font-size: clamp(16px, 4.2vw, 22px);
@@ -254,7 +254,7 @@ h2.landing-info-h2 {
   .landing-info h3 {
     font-size: 18px;
   }
-  .landing-intro h2 {
+  .landing-intro .landing-hello {
     font-size: 18px;
   }
   .landing-intro h1 {
@@ -274,7 +274,7 @@ h2.landing-info-h2 {
   .character-model {
     height: 80vh;
   }
-  .landing-intro h2 {
+  .landing-intro .landing-hello {
     font-size: 25px;
   }
   .landing-intro h1 {
@@ -378,7 +378,7 @@ h2.landing-info-h2 {
   }
 }
 @media screen and (min-width: 1600px) {
-  .landing-intro h2 {
+  .landing-intro .landing-hello {
     font-size: 35px;
   }
   .landing-intro h1 {

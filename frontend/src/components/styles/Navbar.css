@@ -15,6 +15,9 @@
   z-index: 9999;
   gap: 16px;
 }
+.header nav {
+  flex-shrink: 0;
+}
 .header ul {
   font-size: 11px;
   display: flex;

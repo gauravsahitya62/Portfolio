@@ -322,6 +322,7 @@ const Play = () => {
         <Link to="/" className="back-button" data-cursor="disable">
           ← Back to Home
         </Link>
+        <h1 className="sr-only">Play chess with Gaurav Sahitya</h1>
       </div>
 
       <div className="chess-container">

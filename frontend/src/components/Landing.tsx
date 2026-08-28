@@ -9,15 +9,18 @@ const Landing = ({ children }: PropsWithChildren) => {
 
   return (
     <>
-      <div className="landing-section" id="landingDiv">
+      <section className="landing-section" id="landingDiv" aria-label="Introduction">
         <div className="landing-container">
           <div className="landing-intro">
-            <h2>Hello! I'm</h2>
+            <p className="landing-hello">Hello! I'm</p>
             <h1>
               {firstName.toUpperCase()}
               {" "}
               <br />
               {lastName && <span>{lastName.toUpperCase()}</span>}
+              <span className="sr-only">
+                {", software engineer (SDE-II) in Bengaluru specializing in Java and distributed systems"}
+              </span>
             </h1>
           </div>
           <div className="landing-info">
@@ -33,7 +36,7 @@ const Landing = ({ children }: PropsWithChildren) => {
           </div>
         </div>
         {children}
-      </div>
+      </section>
     </>
   );
 };

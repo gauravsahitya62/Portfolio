@@ -10,6 +10,7 @@ import WhatIDo from "./WhatIDo";
 import Work from "./Work";
 import TechStackNew from "./TechStackNew";
 import CallToAction from "./CallToAction";
+import Faq from "./Faq";
 import setSplitText from "./utils/splitText";
 import { setAllTimeline } from "./utils/GsapScroll";
 import { applyDeviceClass } from "../utils/device";
@@ -43,10 +44,13 @@ const MainContainer = ({ children }: PropsWithChildren) => {
 
   return (
     <div className="container-main">
+      <a className="skip-link" href="#about">
+        Skip to content
+      </a>
       <Cursor />
       <Navbar />
       <SocialIcons />
-      <div className="container-main">
+      <main className="container-main" id="main-content">
         <Landing>{children}</Landing>
         <About />
         <WhatIDo />
@@ -54,8 +58,9 @@ const MainContainer = ({ children }: PropsWithChildren) => {
         <Work />
         <TechStackNew />
         <CallToAction />
+        <Faq />
         <Contact />
-      </div>
+      </main>
     </div>
   );
 };

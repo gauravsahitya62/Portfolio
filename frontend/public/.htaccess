@@ -2,10 +2,27 @@ Options -MultiViews
 RewriteEngine On
 RewriteBase /
 
-RewriteRule ^robots\.txt$ - [L]
-RewriteRule ^sitemap\.xml$ - [L]
-RewriteRule ^site\.webmanifest$ - [L]
+# Keep crawler files static
+RewriteRule ^(robots\.txt|sitemap\.xml|site\.webmanifest|llms\.txt|llms-full\.txt|humans\.txt|favicon\.svg)$ - [L]
+
+# Force HTTPS and apex domain in production
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} ^(www\.)?gauravsahitya\.com$ [NC]
+RewriteRule ^ https://gauravsahitya.com%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTP_HOST} ^www\.gauravsahitya\.com$ [NC]
+RewriteRule ^ https://gauravsahitya.com%{REQUEST_URI} [L,R=301]
+
 RewriteRule ^index\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.html [L]
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(txt|xml|webmanifest)$">
+    Header set X-Robots-Tag "index, follow"
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Content-Type-Options "nosniff"
+</IfModule>

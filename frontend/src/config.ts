@@ -2,6 +2,42 @@ export const config = {
     site: {
         url: "https://gauravsahitya.com",
         ogImage: "/images/mypic.jpeg",
+        name: "Gaurav Sahitya — Software Engineer Portfolio",
+        locale: "en_IN",
+        language: "en",
+    },
+    seo: {
+        identity:
+            "Gaurav Sahitya is a software engineer (SDE-II) based in Bengaluru, India. He designs and scales Java and Spring Boot distributed systems at KadelLabs.",
+        keywords:
+            "Gaurav Sahitya, Gaurav Sahitya software engineer, SDE-II Bengaluru, Java developer India, Spring Boot engineer, distributed systems engineer, AWS backend engineer, KadelLabs, microservices developer",
+        faqs: [
+            {
+                question: "Who is Gaurav Sahitya?",
+                answer:
+                    "Gaurav Sahitya is a software engineer (SDE-II) based in Bengaluru, India. He specializes in Java, Spring Boot, microservices, and AWS-backed distributed systems, and currently works at KadelLabs.",
+            },
+            {
+                question: "What does Gaurav Sahitya do?",
+                answer:
+                    "Gaurav Sahitya builds production backend platforms: Java microservices, REST APIs, AWS document pipelines, and AI-assisted automation. His work includes cutting API latency by 35%+ and scaling systems to 10,000+ monthly users.",
+            },
+            {
+                question: "Where does Gaurav Sahitya work?",
+                answer:
+                    "Gaurav Sahitya is a Software Engineer at KadelLabs in Bengaluru (2025–present). He previously worked at AppCrave (2023–2025) and Fox Digits (2022–2023).",
+            },
+            {
+                question: "What technologies does Gaurav Sahitya use?",
+                answer:
+                    "Gaurav Sahitya works with Java, Spring Boot, microservices, REST APIs, AWS (Textract, Lambda, S3), MySQL, React, OpenAI, Hibernate, Spring Security, JUnit, and Mockito.",
+            },
+            {
+                question: "How can I contact Gaurav Sahitya?",
+                answer:
+                    "Email gauravsahitya62@gmail.com, connect on LinkedIn at linkedin.com/in/gaurav-sahitya/, or visit https://gauravsahitya.com/.",
+            },
+        ],
     },
     developer: {
         name: "Gaurav",

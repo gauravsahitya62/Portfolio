@@ -16,13 +16,19 @@
   width: 100%;
   max-width: calc(100% - 8px);
 }
-.about-me h3 {
+.about-me .title {
   font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 4px;
   font-weight: 400;
   color: var(--accentColor);
   margin-bottom: 15px;
+}
+
+.about-me .about-identity {
+  font-weight: 500;
+  margin-bottom: 18px;
+  color: #ddd6e4;
 }
 
 .about-me p {
@@ -49,7 +55,7 @@
   .about-me {
     width: 560px;
   }
-  .about-me h3 {
+  .about-me h2 {
     font-size: 22px;
     letter-spacing: 6px;
   }
@@ -64,7 +70,7 @@
     max-width: calc(100% - 70px);
     transform: translateY(0%);
   }
-  .about-me h3 {
+  .about-me h2 {
     font-size: 25px;
     letter-spacing: 7px;
   }

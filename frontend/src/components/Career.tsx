@@ -11,9 +11,9 @@ const getDisplayYear = (period: string) => {
 
 const Career = () => {
   return (
-    <div className="career-section section-container">
+    <section className="career-section section-container" id="career" aria-labelledby="career-heading">
       <div className="career-container">
-        <h2>
+        <h2 id="career-heading">
           My career <span>&</span>
           <br /> experience
         </h2>
@@ -22,20 +22,22 @@ const Career = () => {
             <div className="career-dot"></div>
           </div>
           {config.experiences.map((exp, index) => (
-            <div key={index} className="career-info-box">
+            <article key={index} className="career-info-box">
               <div className="career-info-in">
                 <div className="career-role">
-                  <h4>{exp.position}</h4>
-                  <h5>{exp.company}</h5>
+                  <h3>{exp.position}</h3>
+                  <h4>{exp.company}</h4>
                 </div>
-                <h3>{getDisplayYear(exp.period)}</h3>
+                <div className="career-year">
+                  <time dateTime={exp.period}>{getDisplayYear(exp.period)}</time>
+                </div>
               </div>
               <p>{exp.description}</p>
-            </div>
+            </article>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
